@@ -1,0 +1,70 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+
+    String catGradleVersion = '0.0.22'
+
+    dependencies {
+        classpath "com.moowork.gradle:gradle-node-plugin:0.11"
+        classpath "cc.catalysts.gradle:cat-gradle-systemjs-plugin:${catGradleVersion}"
+        classpath "cc.catalysts.gradle:cat-gradle-less-plugin:${catGradleVersion}"
+        classpath "cc.catalysts.gradle:cat-gradle-buildinfo-plugin:${catGradleVersion}"
+        classpath "cc.catalysts.gradle:cat-gradle-webjars-plugin:${catGradleVersion}"
+    }
+}
+
+
+apply plugin: 'com.moowork.node'
+apply plugin: 'cc.catalysts.systemjs'
+apply plugin: 'cc.catalysts.less'
+apply plugin: 'cc.catalysts.buildinfo'
+apply plugin: 'cc.catalysts.webjars'
+
+systemjs {
+    srcDir = new File(project.projectDir, 'src/main/resources/static')
+}
+
+buildinfo {
+    packageName = 'cc.catalysts.boot.sample'
+}
+
+webjars {
+    packageName = 'cc.catalysts.boot.sample'
+    destinationDir = file("${project.projectDir}/target/generated-sources/cat-webjar")
+}
+
+configurations {
+    compile.exclude(group: 'org.javassist', module: 'javassist:3.16.1-GA')
+}
+
+dependencies {
+    compile('org.javassist:javassist:3.18.2-GA')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf:' + springBootVersion)
+    compile('org.springframework.boot:spring-boot-starter-security:' + springBootVersion)
+    compile('org.thymeleaf.extras:thymeleaf-extras-springsecurity4:2.1.2.RELEASE')
+
+    compile('cc.catalysts.boot:cat-boot-thymeleaf:' + catBootVersion)
+
+    compile 'org.webjars.bower:angular:1.5.0'
+    compile 'org.webjars.bower:angular-i18n:1.5.0'
+    compile 'org.webjars.bower:angular-route:1.5.0'
+    compile 'org.webjars.bower:angular-ui-bootstrap-bower:1.2.2'
+    compile 'org.webjars.bower:bootstrap:3.3.5'
+    compile 'org.webjars.bower:jquery:2.2.0'
+    compile 'org.webjars.bower:angular-file-upload:2.2.0'
+    compile 'org.webjars.bower:lodash:3.10.1'
+    compile 'org.webjars.bower:system.js:0.19.17'
+    compile "cc.catalysts.boot:cat-boot-i18n-angular:${catBootVersion}"
+}
+
+task npmJshint(type: NpmTask) {
+    args = ['run-script', 'jshint']
+    inputs.dir('./src/main/resources/static/js')
+}
+
+npmJshint.dependsOn 'npmInstall'
+
+processResources.dependsOn 'npmJshint'

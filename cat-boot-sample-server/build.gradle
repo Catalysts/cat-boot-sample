@@ -1,0 +1,9 @@
+dependencies {
+    compile project(':cat-boot-sample-ui')
+
+    compile('org.springframework.boot:spring-boot-starter-web')
+
+    compile('cc.catalysts.boot:cat-boot-i18n:' + catBootVersion)
+    runtime('cc.catalysts.boot:cat-boot-javamelody:' + catBootVersion)
+}
+

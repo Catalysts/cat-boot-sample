@@ -1,0 +1,4 @@
+rootProject.name = 'cat-boot-sample'
+include 'cat-boot-sample-server'
+include 'cat-boot-sample-ui'
+
