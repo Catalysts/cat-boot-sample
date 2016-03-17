@@ -1,10 +1,8 @@
 <div class="row">
-    <h2>Dynamic page content</h2>
+    <h2 cb-i18n="content.angular.body"></h2>
+    <p cb-i18n="content.angular.page_1"></p>
     <p>
-        This is page 1.
-    </p>
-    <p>
-        <button class="btn btn-primary" ng-click="switchToPage('dynamic-page-2')">Page 2</button>
+        <button class="btn btn-primary" ng-click="switchToPage('dynamic-page-2')" cb-i18n="content.angular.link.page_2"></button>
     </p>
 
     <form class="form-inline">
@@ -14,5 +12,5 @@
         </div>
     </form>
 
-    <p>Product: {{product()}}</p>
+    <p><span cb-i18n="content.angular.product"></span> {{product() | number}}</p>
 </div>
