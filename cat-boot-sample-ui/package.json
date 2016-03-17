@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "jshint": "jshint ./src/main/resources/static/js"
+  },
+  "devDependencies": {
+    "jshint": "2.9.1"
+  }
+}

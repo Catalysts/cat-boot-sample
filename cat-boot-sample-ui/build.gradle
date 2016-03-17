@@ -36,12 +36,7 @@ webjars {
     destinationDir = file("${project.projectDir}/target/generated-sources/cat-webjar")
 }
 
-configurations {
-    compile.exclude(group: 'org.javassist', module: 'javassist:3.16.1-GA')
-}
-
 dependencies {
-    compile('org.javassist:javassist:3.18.2-GA')
     compile('org.springframework.boot:spring-boot-starter-thymeleaf:' + springBootVersion)
     compile('org.springframework.boot:spring-boot-starter-security:' + springBootVersion)
     compile('org.thymeleaf.extras:thymeleaf-extras-springsecurity4:2.1.2.RELEASE')
@@ -54,8 +49,6 @@ dependencies {
     compile 'org.webjars.bower:angular-ui-bootstrap-bower:1.2.2'
     compile 'org.webjars.bower:bootstrap:3.3.5'
     compile 'org.webjars.bower:jquery:2.2.0'
-    compile 'org.webjars.bower:angular-file-upload:2.2.0'
-    compile 'org.webjars.bower:lodash:3.10.1'
     compile 'org.webjars.bower:system.js:0.19.17'
     compile "cc.catalysts.boot:cat-boot-i18n-angular:${catBootVersion}"
 }
