@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <base th:href="@{/}"/>
+    <meta charset="utf-8"/>
+    <title>Angular page</title>
+    <meta name="current-locale" th:content="${T(org.springframework.context.i18n.LocaleContextHolder).getLocale()}"/>
+
+    <link rel="stylesheet"
+          th:href="@{/webjars/cat-boot-sample-ui/{version}/cat-boot-sample-ui.css(version=${T(cc.catalysts.boot.sample.BuildInfo).VERSION})}"/>
+</head>
+<body>
+
+<div class="container i18n-hidden">
+
+    <div class="row">
+        <ul class="nav nav-pills">
+            <li role="presentation"><a th:href="@{/}">Thymeleaf page</a></li>
+            <li role="presentation" class="active"><a th:href="@{/angular}">Angular page</a></li>
+        </ul>
+    </div>
+
+    <div class="row">
+        <p th:text="'Thymeleaf text'">Unprocessed text</p>
+    </div>
+
+    <div ng-view=""></div>
+</div>
+
+<script webjars:src="system.js:dist/system.js"></script>
+<script th:src="@{/webjars/cat-boot-sample-ui/{version}/webjar-config.js(version=${T(cc.catalysts.boot.sample.BuildInfo).VERSION})}"></script>
+<script th:src="@{/webjars/cat-boot-sample-ui/{version}/cat-boot-sample-ui-bundle.js(version=${T(cc.catalysts.boot.sample.BuildInfo).VERSION})}"
+        th:if="${@environment.acceptsProfiles('ui-bundle')}"></script>
+<script>
+    System.import('js/cat-boot-sample-ui.js').then(null, console.error.bind(console));
+</script>
+
+</body>
+</html>

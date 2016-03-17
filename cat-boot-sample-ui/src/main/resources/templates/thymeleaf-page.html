@@ -3,7 +3,7 @@
 <head>
     <base th:href="@{/}"/>
     <meta charset="utf-8"/>
-    <title>Title</title>
+    <title>Thymeleaf page</title>
 
     <link rel="stylesheet"
           th:href="@{/webjars/cat-boot-sample-ui/{version}/cat-boot-sample-ui.css(version=${T(cc.catalysts.boot.sample.BuildInfo).VERSION})}"/>
@@ -14,8 +14,8 @@
 
     <div class="row">
         <ul class="nav nav-pills">
-            <li role="presentation" class="active"><a href="#">Home</a></li>
-            <li role="presentation"><a href="#">Profile</a></li>
+            <li role="presentation" class="active"><a th:href="@{/}">Thymeleaf page</a></li>
+            <li role="presentation"><a th:href="@{/angular}">Angular page</a></li>
         </ul>
     </div>
 

@@ -30,6 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        // permit all requests
         http
                 .authorizeRequests()
                 .antMatchers("/**").permitAll();
