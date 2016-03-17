@@ -26,11 +26,14 @@ define([
         .config(['$routeProvider', function ($routeProvider) {
             $routeProvider
                 .when('/', {
-                    redirectTo: '/dynamic-page'
+                    redirectTo: '/dynamic-page-1'
                 })
-                .when('/dynamic-page', {
-                    templateUrl: 'views/dynamic-page-view.html',
-                    // TODO consider removing the controller entirely
+                .when('/dynamic-page-1', {
+                    templateUrl: 'views/dynamic-page-view-1.html',
+                    controller: 'DynamicPageCtrl'
+                })
+                .when('/dynamic-page-2', {
+                    templateUrl: 'views/dynamic-page-view-2.html',
                     controller: 'DynamicPageCtrl'
                 })
                 .otherwise({
