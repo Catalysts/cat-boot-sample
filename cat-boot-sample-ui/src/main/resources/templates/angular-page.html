@@ -3,7 +3,7 @@
 <head>
     <base th:href="@{/}"/>
     <meta charset="utf-8"/>
-    <title>Angular page</title>
+    <title th:text="#{application.title}"></title>
     <meta name="current-locale" th:content="${T(org.springframework.context.i18n.LocaleContextHolder).getLocale()}"/>
 
     <link rel="stylesheet"
@@ -14,14 +14,25 @@
 <div class="container i18n-hidden">
 
     <div class="row">
-        <ul class="nav nav-pills">
-            <li role="presentation"><a th:href="@{/}">Thymeleaf page</a></li>
-            <li role="presentation"><a th:href="@{/angular}" target="_self" class="active">Angular page</a></li>
-        </ul>
+        <div class="pull-right">
+            <form th:action="@{/}" method="get">
+                <fieldset>
+                    <select name="lang"
+                            class="form-control"
+                            onchange="this.form.submit()">
+                        <option value="en" th:selected="__${#locale}__=='en'">English</option>
+                        <option value="de" th:selected="__${#locale}__=='de'">Deutsch</option>
+                    </select>
+                </fieldset>
+            </form>
+        </div>
     </div>
 
     <div class="row">
-        <p th:text="'Thymeleaf text'">Unprocessed text</p>
+        <ul class="nav nav-pills">
+            <li role="presentation"><a th:href="@{/}" th:text="#{page.thymeleaf}"></a></li>
+            <li role="presentation"><a th:href="@{/angular}" target="_self" class="active" th:text="#{page.angular}"></a></li>
+        </ul>
     </div>
 
     <div ng-view=""></div>

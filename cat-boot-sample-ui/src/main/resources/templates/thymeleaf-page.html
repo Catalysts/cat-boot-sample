@@ -3,7 +3,7 @@
 <head>
     <base th:href="@{/}"/>
     <meta charset="utf-8"/>
-    <title>Thymeleaf page</title>
+    <title th:text="#{application.title}"></title>
 
     <link rel="stylesheet"
           th:href="@{/webjars/cat-boot-sample-ui/{version}/cat-boot-sample-ui.css(version=${T(cc.catalysts.boot.sample.BuildInfo).VERSION})}"/>
@@ -13,14 +13,29 @@
 <div class="container i18n-hidden">
 
     <div class="row">
+        <div class="pull-right">
+            <form th:action="@{/}" method="get">
+                <fieldset>
+                    <select name="lang"
+                            class="form-control"
+                            onchange="this.form.submit()">
+                        <option value="en" th:selected="__${#locale}__=='en'">English</option>
+                        <option value="de" th:selected="__${#locale}__=='de'">Deutsch</option>
+                    </select>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
         <ul class="nav nav-pills">
-            <li role="presentation" class="active"><a th:href="@{/}">Thymeleaf page</a></li>
-            <li role="presentation"><a th:href="@{/angular}">Angular page</a></li>
+            <li role="presentation" class="active"><a th:href="@{/}" th:text="#{page.thymeleaf}"></a></li>
+            <li role="presentation"><a th:href="@{/angular}" th:text="#{page.angular}"></a></li>
         </ul>
     </div>
 
     <div class="row">
-        <p th:text="'Thymeleaf text'">Unprocessed text</p>
+        <p th:text="#{content.thymeleaf.body}"></p>
     </div>
 </div>
 
