@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <base th:href="@{/}"/>
     <meta charset="utf-8"/>
@@ -36,6 +36,8 @@
 
     <div class="row">
         <h2 th:text="#{content.thymeleaf.body}"></h2>
+
+        <p th:text="${localeSet}"></p>
     </div>
 </div>
 

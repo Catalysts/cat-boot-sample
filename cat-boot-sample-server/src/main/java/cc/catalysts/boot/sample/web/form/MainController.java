@@ -1,6 +1,9 @@
 package cc.catalysts.boot.sample.web.form;
 
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +27,16 @@ public class MainController {
 
     private static final Logger LOG = org.slf4j.LoggerFactory.getLogger(MainController.class);
 
+    private final MessageSource messageSource;
+
+    @Autowired
+    public MainController(MessageSource messageSource) {
+        this.messageSource = messageSource;
+    }
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    String main(HttpServletRequest request, HttpServletResponse response, @RequestParam(name = "lang", required = false) String lang) {
+    ModelAndView main(HttpServletRequest request, HttpServletResponse response, @RequestParam(name = "lang", required = false) String lang) {
+        Map<String, Object> model = new HashMap<>();
         if (lang != null) {
             Locale locale = StringUtils.parseLocaleString(lang);
             if (locale == null) {
@@ -33,16 +44,17 @@ public class MainController {
             } else {
                 LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
                 localeResolver.setLocale(request, response, locale);
+
+                model.put("localeSet", messageSource.getMessage("content.thymeleaf.localeSet", new Object[]{locale.toString()}, LocaleContextHolder.getLocale()));
             }
         }
 
-        return "thymeleaf-page";
+        return new ModelAndView("thymeleaf-page", model);
     }
 
     @RequestMapping(value = "/angular", method = RequestMethod.GET)
-    ModelAndView angular() {
-        Map<String, Object> model = new HashMap<>();
-        return new ModelAndView("angular-page", model);
+    String angular() {
+        return "angular-page";
     }
 
 }
