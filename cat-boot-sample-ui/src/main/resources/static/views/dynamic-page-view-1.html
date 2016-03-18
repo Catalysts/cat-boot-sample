@@ -6,15 +6,14 @@
     </p>
 
     <p>
-    <form class="form-inline">
-        <div class="form-group">
+        <form class="form-inline">
             <input class="form-control" type="number" ng-model="demoInput1"/>
             <input class="form-control" type="number" ng-model="demoInput2"/>
-        </div>
-    </form>
+            <select class="form-control" cb-enum="Operation" ng-model="demoInputOperation"></select>
+        </form>
     </p>
 
     <p>
-        <span cb-i18n="content.angular.product"></span> {{product() | number}}
+        <span cb-i18n="content.angular.result"></span> {{result() | number}}
     </p>
 </div>
