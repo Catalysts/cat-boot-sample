@@ -14,7 +14,7 @@
 
     <div class="row">
         <div class="pull-right">
-            <form th:action="@{/}" method="get">
+            <form th:action="@{/}" method="get" class="locale-select">
                 <fieldset>
                     <select name="lang"
                             class="form-control"
@@ -35,7 +35,7 @@
     </div>
 
     <div class="row">
-        <p th:text="#{content.thymeleaf.body}"></p>
+        <h2 th:text="#{content.thymeleaf.body}"></h2>
     </div>
 </div>
 

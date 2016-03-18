@@ -5,12 +5,16 @@
         <button class="btn btn-primary" ng-click="switchToPage('dynamic-page-2')" cb-i18n="content.angular.link.page_2"></button>
     </p>
 
+    <p>
     <form class="form-inline">
         <div class="form-group">
-            <input class="form-control" ng-model="demoInput1"/>
-            <input class="form-control" ng-model="demoInput2"/>
+            <input class="form-control" type="number" ng-model="demoInput1"/>
+            <input class="form-control" type="number" ng-model="demoInput2"/>
         </div>
     </form>
+    </p>
 
-    <p><span cb-i18n="content.angular.product"></span> {{product() | number}}</p>
+    <p>
+        <span cb-i18n="content.angular.product"></span> {{product() | number}}
+    </p>
 </div>
