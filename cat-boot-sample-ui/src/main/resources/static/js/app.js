@@ -42,13 +42,6 @@ define([
         }])
         .config(['$httpProvider', function ($httpProvider) {
             $httpProvider.defaults.withCredentials = true;
-        }])
-        .run(['cbI18nService', function (catBootI18nService) {
-            catBootI18nService
-                .resolve()
-                .then(function () {
-                    angular.element('.i18n-hidden').removeClass('i18n-hidden');
-                });
         }]);
 
     angular.element(document).ready(
