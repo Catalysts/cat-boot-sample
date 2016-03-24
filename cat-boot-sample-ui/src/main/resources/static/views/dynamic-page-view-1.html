@@ -1,4 +1,8 @@
 <div class="row">
+    <!--
+    These dynamically generated text elements use translations made available
+    by cat-boot-i18n-angular.
+    -->
     <h2 cb-i18n="content.angular.body"></h2>
     <p cb-i18n="content.angular.page_1"></p>
     <p>
@@ -9,6 +13,12 @@
         <form class="form-inline">
             <input class="form-control" type="number" ng-model="demoInput1"/>
             <input class="form-control" type="number" ng-model="demoInput2"/>
+
+            <!--
+            Use the cat-boot-enum module from cat-boot-i18n-angular to create a
+            select control with values from a server-side enum and localized
+            text.
+            -->
             <select class="form-control" cb-enum="Operation" ng-model="demoInputOperation"></select>
         </form>
     </p>

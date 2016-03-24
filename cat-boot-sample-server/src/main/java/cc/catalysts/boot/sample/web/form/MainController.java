@@ -45,6 +45,7 @@ public class MainController {
                 LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
                 localeResolver.setLocale(request, response, locale);
 
+                // Messages can be localized from Java as follows:
                 model.put("localeSet", messageSource.getMessage("content.thymeleaf.localeSet", new Object[]{locale.toString()}, LocaleContextHolder.getLocale()));
             }
         }

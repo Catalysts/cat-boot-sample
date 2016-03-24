@@ -22,6 +22,7 @@ public class CatBootSampleServer implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
+        // Register the enum with cat-boot-i18n:
         clientEnumRegistry.registerClientEnum(Operation.class);
     }
 }
