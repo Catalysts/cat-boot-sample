@@ -3,7 +3,7 @@ version '0.0.1-SNAPSHOT'
 
 ext {
     springBootVersion = '1.3.2.RELEASE'
-    catBootVersion = '0.0.12-SNAPSHOT'
+    catBootVersion = '0.0.10'
 }
 
 buildscript {
