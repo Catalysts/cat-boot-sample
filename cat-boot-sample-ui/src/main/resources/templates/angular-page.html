@@ -13,7 +13,7 @@
     <link rel="stylesheet"
           th:href="@{/webjars/cat-boot-sample-ui/{version}/cat-boot-sample-ui.css(version=${T(cc.catalysts.boot.sample.BuildInfo).VERSION})}"/>
 </head>
-<body>
+<body class="ng-cloak">
 
 <div class="container">
 
@@ -40,6 +40,10 @@
     </div>
 
     <div ng-view=""></div>
+</div>
+
+<div th:fragment="loader" class="cat-boot-sample-page-loader">
+    <div>Loading...</div>
 </div>
 
 <!--
