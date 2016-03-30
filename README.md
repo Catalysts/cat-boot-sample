@@ -1,6 +1,41 @@
 # cat-boot-sample
 Sample application for [cat-boot](https://github.com/Catalysts/cat-boot)
-and [cat-gradle-plugins](https://github.com/Catalysts/cat-gradle-plugins). Demonstrates:
+and [cat-gradle-plugins](https://github.com/Catalysts/cat-gradle-plugins).
+
+## Highlights
+
+### Turbocharge your enums
+![cat-boot-sample in action](cat-boot-sample-1.png)
+
+Select control automatically populated from a Java enum:
+
+    public enum Operation {
+        Addition,
+        Multiplication,
+        Division
+    }
+
+With translations provided in a simple format:
+
+    enum.Operation.Addition = Addieren
+    enum.Operation.Multiplication = Multiplizieren
+    enum.Operation.Division = Dividieren
+
+And extremely simple usage from an AngularJS view:
+
+    <select class="form-control" cb-enum="Operation" ng-model="demoInputOperation"></select>
+
+### Proliferate your WebJars
+
+Keep your WebJar versions in your gradle build files and refer to them from html:
+
+    <script webjars:src="system.js:dist/system.js"></script>
+
+And from less:
+
+    @import "@{webjars-bootstrap}/less/bootstrap";
+
+## All features
 
 ### [cat-boot-javamelody](https://github.com/Catalysts/cat-boot/tree/master/cat-boot-javamelody)
 Effortless integration of javamelody monitoring into Spring-Boot applications.
