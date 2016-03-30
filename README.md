@@ -9,31 +9,40 @@ and [cat-gradle-plugins](https://github.com/Catalysts/cat-gradle-plugins).
 
 Select control automatically populated from a Java enum:
 
-    public enum Operation {
-        Addition,
-        Multiplication,
-        Division
-    }
+```java
+public enum Operation {
+    Addition,
+    Multiplication,
+    Division
+}
+```
 
 With translations provided in a simple format:
 
-    enum.Operation.Addition = Addieren
-    enum.Operation.Multiplication = Multiplizieren
-    enum.Operation.Division = Dividieren
+```properties
+enum.Operation.Addition = Addieren
+enum.Operation.Multiplication = Multiplizieren
+enum.Operation.Division = Dividieren
+```
 
 And extremely simple usage from an AngularJS view:
 
-    <select class="form-control" cb-enum="Operation" ng-model="demoInputOperation"></select>
-
+```html
+<select class="form-control" cb-enum="Operation" ng-model="demoInputOperation"></select>
+```
 ### Proliferate your WebJars
 
 Keep your WebJar versions in your gradle build files and refer to them from html:
 
-    <script webjars:src="system.js:dist/system.js"></script>
+```html
+<script webjars:src="system.js:dist/system.js"></script>
+```
 
 And from less:
 
-    @import "@{webjars-bootstrap}/less/bootstrap";
+```less
+@import "@{webjars-bootstrap}/less/bootstrap";
+```
 
 ## All features
 
